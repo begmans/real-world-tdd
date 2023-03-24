@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require('express');
-const got = require('got');
 const axios = require('axios');
 
 
@@ -14,7 +13,7 @@ const axios = require('axios');
 }
 
 function buildOrGetGame(games, gameId) {
-    var game = games[gameId]; 
+    let game = games[gameId]; 
     if ( game == undefined) { game = {}; games[gameId] = game;}
     return game;
 }
@@ -22,7 +21,7 @@ function buildOrGetGame(games, gameId) {
 function updateGame(game, event) {
     switch(event.type) {
         case 'game-start':
-            var splitId = event.gameId.split("-");
+            const splitId = event.gameId.split("-");
             game.home = splitId[0];
             game.visitor = splitId[1];
             game.score = [0, 0];
@@ -39,15 +38,14 @@ function updateGame(game, event) {
     }
 }
 function buildBoard(events) {
-    var games = {};
-    for (var i in events) {
-        var event = events[i];
-        var game = buildOrGetGame(games, event.gameId);
+    const games = {};
+    for (const event of events) {
+        const game = buildOrGetGame(games, event.gameId);
         updateGame(game, event);
     } 
     // console.debug(games);
     // TODO reste à transformer la map games en tableau
-    return [];
+    return Object.values(games);
 }
 
 function createLeaderBoardApp() {

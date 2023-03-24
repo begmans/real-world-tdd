@@ -5,7 +5,7 @@ const request = require('supertest-as-promised');
 describe('FootballExternalService', () => {
     it('sends some football events over http', async function () {
         this.timeout(6000);
-        const app = FootBallExternalService_1.createEventsApp();
+        const app = (0, FootBallExternalService_1.createEventsApp)();
         await request(app)
             .get('/events')
             .expect([
