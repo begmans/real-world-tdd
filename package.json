@@ -19,7 +19,7 @@
     "@types/mongodb": "^4.0.7",
     "@types/supertest-as-promised": "^2.0.38",
     "amqplib": "^0.8.0",
-    "axios": "^0.25.0",
+    "axios": "^1.6.0",
     "chai": "^4.3.4",
     "express": "^4.18.2",
     "got": "^12.1.0",
